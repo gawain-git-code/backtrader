@@ -970,7 +970,7 @@ class Strategy(with_metaclass(MetaStrategy, StrategyBase)):
 
         return None
 
-    def close(self, data=None, size=None, **kwargs):
+    def close(self, data=None, size=None, possize=None, **kwargs):
         '''
         Counters a long/short position closing it
 
@@ -988,7 +988,7 @@ class Strategy(with_metaclass(MetaStrategy, StrategyBase)):
         elif data is None:
             data = self.data
 
-        possize = self.getposition(data, self.broker).size
+        possize = self.getposition(data, self.broker).size if possize is None else possize
         size = abs(size if size is not None else possize)
 
         if possize > 0:
