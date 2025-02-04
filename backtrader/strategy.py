@@ -767,9 +767,9 @@ class Strategy(with_metaclass(MetaStrategy, StrategyBase)):
         '''
         return self.env.datasbyname[name]
 
-    def cancel(self, order):
+    def cancel(self, order, custom_info=None):
         '''Cancels the order in the broker'''
-        self.broker.cancel(order)
+        self.broker.cancel(order, custom_info)
 
     def buy(self, data=None,
             size=None, price=None, plimit=None,
